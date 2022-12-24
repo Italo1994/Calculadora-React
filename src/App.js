@@ -29,9 +29,10 @@ function App() {
       setCurrentNumber('0');
       setOperation('+');
     } else {
-      const sub = Number(firstNumber) + Number(currentNumber);
-      setCurrentNumber(String(sub));
+      const sum = Number(firstNumber) + Number(currentNumber);
+      setCurrentNumber(String(sum));
       setOperation('');
+      setFirstNumber('0');
     }
   }
 
@@ -42,9 +43,38 @@ function App() {
       setCurrentNumber('0');
       setOperation('-');
     } else {
-      const sum = Number(firstNumber) - Number(currentNumber);
-      setCurrentNumber(String(sum));
+      const sub = Number(firstNumber) - Number(currentNumber);
+      setCurrentNumber(String(sub));
       setOperation('');
+      setFirstNumber('0');
+    }
+  }
+
+  const handleMultNumbers = () => {
+
+    if(firstNumber === '0') {
+      setFirstNumber(String(currentNumber) );
+      setCurrentNumber('0');
+      setOperation('*');
+    } else {
+      const mult = Number(firstNumber) * Number(currentNumber);
+      setCurrentNumber(String(mult));
+      setOperation('');
+      setFirstNumber('0');
+    }
+  }
+
+  const handleDivNumbers = () => {
+
+    if(firstNumber === '0') {
+      setFirstNumber(String(currentNumber) );
+      setCurrentNumber(firstNumber);
+      setOperation('/');
+    } else {
+      const div = Number(firstNumber) / Number(currentNumber);
+      setCurrentNumber(Number(div));
+      setOperation('');
+      setFirstNumber('0');
     }
   }
 
@@ -57,11 +87,15 @@ function App() {
         case '-':
           handleSubNumbers();
           break;
+        case '*':
+          handleMultNumbers();
+          break;
+        case '/':
+          handleDivNumbers();
+          break;
         default:
           break;
       }
-      // setFirstNumber(String(currentNumber));
-      // setCurrentNumber('0');
     }
   }
 
@@ -85,13 +119,13 @@ function App() {
           <Button label="1" onClick={ () => handleAddNumber('1')} />
           <Button label="2" onClick={ () => handleAddNumber('2')} />
           <Button label="3" onClick={ () => handleAddNumber('3')} />
-          <Button label="x" onClick={ () => handleAddNumber('x')} />
+          <Button label="x" onClick={handleMultNumbers} />
         </Row>
         <Row>
           <Button label="AC" onClick={handleOnClear} />
           <Button label="0" onClick={ () => handleAddNumber('0')} />
           <Button label="=" onClick={handleEquals} />
-          <Button label="/" onClick={ () => handleAddNumber('/')} />
+          <Button label="/" onClick={handleDivNumbers} />
         </Row>
       </Content>
     </Container>
