@@ -43,6 +43,7 @@
 <h1 align="center"> 📁 Acesso ao Projeto</h1>
 
 *Clone o repositório https://github.com/Italo1994/Calculadora-React.git*
+*Projeto hospedado no Vercel: https://calculadora-react-ecru.vercel.app/*
 
 <h1 align="center"> 🛠️ Abrir e Rodar o Projeto</h1>
 
